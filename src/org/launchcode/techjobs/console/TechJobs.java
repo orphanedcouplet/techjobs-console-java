@@ -60,11 +60,12 @@ public class TechJobs {
                 // What is their search term?
                 System.out.println("\nSearch term: ");
                 String searchTerm = in.nextLine();
+                String searchTermLowercase = searchTerm.toLowerCase();
 
                 if (searchField.equals("all")) {
-                    System.out.println("Search all fields not yet implemented.");
+                    printJobs(JobData.findByValue(searchTermLowercase));
                 } else {
-                    printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
+                    printJobs(JobData.findByColumnAndValue(searchField, searchTermLowercase));
                 }
             }
         }
@@ -120,10 +121,8 @@ public class TechJobs {
                 for (Map.Entry<String, String> jobInfo : aJob.entrySet()) {
                     System.out.println(jobInfo.getKey() + ": " + jobInfo.getValue());
                 }
+                System.out.println("*****\n");
             }
-            System.out.println("*****");
         }
-
-//        System.out.println("printJobs is not implemented yet");
     }
 }
